@@ -74,9 +74,47 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** cuisine **/
+  --ion-color-cuisine: #479a5a;
+  --ion-color-cuisine-rgb: 71,154,90;
+  --ion-color-cuisine-contrast: #ffffff;
+  --ion-color-cuisine-contrast-rgb: 255,255,255;
+  --ion-color-cuisine-shade: #3e884f;
+  --ion-color-cuisine-tint: #59a46b;
+
+  /** cusine orange **/
+  --ion-color-cuorange: #ff8042;
+  --ion-color-cuorange-rgb: 255,128,66;
+  --ion-color-cuorange-contrast: #ffffff;
+  --ion-color-cuorange-contrast-rgb: 255,255,255;
+  --ion-color-cuorange-shade: #e0713a;
+  --ion-color-cuorange-tint: #ff8d55;
+
+  .home{
+    --background: url('../assets/fondostart.png');
+  }
+
+  .ion-color-cuisine {
+    --ion-color-base: var(--ion-color-cuisine);
+    --ion-color-base-rgb: var(--ion-color-cuisine-rgb);
+    --ion-color-contrast: var(--ion-color-cuisine-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-cuisine-contrast-rgb);
+    --ion-color-shade: var(--ion-color-cuisine-shade);
+    --ion-color-tint: var(--ion-color-cuisine-tint);
+  }
+
+  .ion-color-cuorange {
+    --ion-color-base: var(--ion-color-cuorange);
+    --ion-color-base-rgb: var(--ion-color-cuorange-rgb);
+    --ion-color-contrast: var(--ion-color-cuorange-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-cuorange-contrast-rgb);
+    --ion-color-shade: var(--ion-color-cuorange-shade);
+    --ion-color-tint: var(--ion-color-cuorange-tint);
+  }
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   /*
    * Dark Colors
    * -------------------------------------------
@@ -226,4 +264,5 @@
   ion-title.title-large {
     --color: white;
   }
+
 }

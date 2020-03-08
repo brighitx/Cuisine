@@ -1,0 +1,58 @@
+<app-header></app-header>
+
+<ion-content text-center padding>
+    <h1 class="titulo">Crea tu cuenta</h1>
+    <div class="container">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <ion-item>
+                <ion-label position="floating">Email</ion-label>
+                <ion-input class="form-control" formControlName="email" type="email"
+                    pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$">
+                </ion-input>
+            </ion-item>  
+            <div class="error-messages">
+                <ng-container *ngFor="let error of error_messages.email">
+                    <div class="error-message"
+                        *ngIf="registerForm.get('email').hasError(error.type) && (registerForm.get('email').dirty || registerForm.get('email').touched)">
+                        {{ error.message }}
+                    </div>
+                </ng-container>
+            </div>
+
+            <ion-item>
+                <ion-label position="stacked">Contraseña</ion-label>    
+                <ion-input formControlName="password" [type]="passwordType"></ion-input>
+                <ion-icon name="eye" slot="end" (click)="togglePassword()"></ion-icon>       
+                        
+            </ion-item>
+            <div class="error-messages">
+                <ng-container *ngFor="let error of error_messages.password">
+                    <div class="error-message"
+                        *ngIf="registerForm.get('password').hasError(error.type) && (registerForm.get('password').dirty || registerForm.get('password').touched)">
+                        {{ error.message }}
+                    </div>
+                </ng-container>
+            </div>
+
+            <ion-item>
+                <ion-label position="floating">Confirma tu contraseña</ion-label>
+                <ion-input class="form-control" formControlName="confirmpassword" type="password"></ion-input>
+            </ion-item>
+            <div class="error-messages">
+                <ng-container *ngFor="let error of error_messages.confirmpassword">
+                    <div class="error-message"
+                        *ngIf="registerForm.get('confirmpassword').hasError(error.type) && (registerForm.get('confirmpassword').dirty || registerForm.get('confirmpassword').touched)">
+                        {{ error.message }}
+                    </div>
+                </ng-container>
+                <div class="error-message"
+                    *ngIf="!registerForm.get('confirmpassword').errors && registerForm.hasError('passwordNotMatch') && (registerForm.get('confirmpassword').dirty || registerForm.get('confirmpassword').touched)">
+                    Las contraseñas no coinciden
+                </div>
+            </div>
+            <ion-button class="btnPosition" size="large" expand="block" color="cuorange" [disabled]="!registerForm.valid" type="submit">
+                Registrar</ion-button>
+        </form>
+
+    </div>
+</ion-content>
