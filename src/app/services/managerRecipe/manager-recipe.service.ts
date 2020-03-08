@@ -1,9 +1,9 @@
-import { Recipeable } from './../../core/model/interfaces/recipeable';
-import { Recipe } from './../../core/model/recipe';
 import { Injectable } from '@angular/core';
-import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
+import { Recipeable } from './../../core/model/interfaces/recipeable';
 import { Observable } from 'rxjs';
+import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
+import { Recipe } from './../../core/model/recipe';
 
 @Injectable({
   providedIn: 'root'
@@ -35,4 +35,15 @@ export class ManagerRecipeService {
     }
     return allRecipe;
   }
+
+  public getRecipe(id: string): Recipe {
+    let myRecipe: Recipe;
+    for (const recipe of this.myRecipes) {
+      if (recipe.id === id) {
+        myRecipe = recipe;
+      }
+    }
+    return myRecipe;
+  }
+
 }

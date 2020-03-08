@@ -13,10 +13,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { IDatabase } from './interfaces/database-i';
 import { AdapterDatabaseService } from './services/adapterDatabase/adapter-database.service';
 
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
+
 import { AngularFireModule } from '@angular/fire';
 import { environment } from './../environments/environment';
 import { FirestoreSettingsToken, AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,6 +38,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     SplashScreen,
     AngularFirestore,
     AngularFireAuthModule,
+    YoutubeVideoPlayer,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: FirestoreSettingsToken, useValue: {}},
     { provide: IDatabase , useClass: AdapterDatabaseService}

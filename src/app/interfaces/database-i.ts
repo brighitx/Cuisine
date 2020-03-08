@@ -13,4 +13,5 @@ export abstract class IDatabase {
     abstract signOut(): void;
     abstract deleteUser(): void;
     abstract getAllRecipes(): Array<Recipe>;
+    abstract getRecipe(id: string): Recipe;
 }

@@ -50,4 +50,7 @@ export class AdapterDatabaseService implements IDatabase {
   public getAllRecipes(): Array<Recipe> {
     return this.managerRecipe.getAllRecipes();
   }
+  public getRecipe(id: string): Recipe {
+    return this.managerRecipe.getRecipe(id);
+  }
 }
