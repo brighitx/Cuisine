@@ -8,10 +8,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./main.page.scss'],
 })
 export class MainPage implements OnInit {
-
-  constructor(public dataBase: IDatabase, private router: Router) { }
+  public searchTerm: string = "";
+  public items: any;
+  constructor(public dataBase: IDatabase, private router: Router) {
+    this.items = this.getData();
+  }
 
   ngOnInit() {
+  }
+
+  filterItems(searchTerm) {
+    return this.getData().filter(item => {
+      return item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+    });
+  }
+
+  setFilteredItems() {
+    this.items = this.filterItems(this.searchTerm);
   }
 
   showRecipe(id) {

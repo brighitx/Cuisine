@@ -5,7 +5,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let item of getData()" (click)="showRecipe(item.id)">
+  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Buscar receta..." animated></ion-searchbar>
+  <ion-card *ngFor="let item of items" (click)="showRecipe(item.id)">
     <img src={{item.image}} style="border-radius: 30%;"/>
     <ion-card-header>
       <ion-card-title>{{item.name}}</ion-card-title>

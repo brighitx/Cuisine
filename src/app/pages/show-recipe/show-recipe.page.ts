@@ -25,11 +25,11 @@ export class ShowRecipePage implements OnInit {
     this.youtube.openVideo(watch);
   }
   getIngredients() {
-    this.ingredients = this.getData().ingredients.split(',');
+    this.ingredients = this.getData().ingredients.split('/');
     return this.ingredients;
   }
   getDirections() {
-    this.directions = this.getData().directions.split('-');
+    this.directions = this.getData().directions.split('/');
     return this.directions;
   }
 
