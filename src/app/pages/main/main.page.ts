@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IDatabase } from 'src/app/interfaces/database-i';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-main',
@@ -10,11 +11,15 @@ import { Router } from '@angular/router';
 export class MainPage implements OnInit {
   public searchTerm: string = "";
   public items: any;
-  constructor(public dataBase: IDatabase, private router: Router) {
+  public veganoption = false;
+  constructor(public dataBase: IDatabase, private router: Router, private menuCtrl: MenuController) {
     this.items = this.getData();
   }
 
   ngOnInit() {
+  }
+  ionViewWillEnter() {
+    this.menuCtrl.enable(true);
   }
 
   filterItems(searchTerm) {
@@ -22,9 +27,24 @@ export class MainPage implements OnInit {
       return item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
     });
   }
+  filterItemsV() {
+    return this.getData().filter(item => {
+      return item.vegan.valueOf() === true;
+    });
+  }
 
   setFilteredItems() {
     this.items = this.filterItems(this.searchTerm);
+  }
+
+  filterItemsVegan() {
+    if (!this.veganoption) {
+      this.veganoption = true;
+      this.items = this.filterItemsV();
+    } else {
+      this.veganoption = false;
+      this.items = this.getData();
+    }
   }
 
   showRecipe(id) {

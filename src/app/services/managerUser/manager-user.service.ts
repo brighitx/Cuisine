@@ -30,14 +30,15 @@ export class ManagerUserService {
       (res: any) => this.myUsers = res,
       (err: any) => console.log('It is a error unexpected from firebase suscribe'));
   }
-  public signUp(email: string, password: string): Promise<any> {
+  public signUp(nameUser: string, email: string, password: string): Promise<any> {
     return new Promise((response) => {
       this.firebaseAuth.auth.createUserWithEmailAndPassword(email, password)
         .then(() => {
           const userBuilder = new UserBuilder();
           const user = userBuilder.restart().email(email).buildWithId(this.firebaseAuth.auth.currentUser.uid);
           this.userColection.doc(user.id).set({
-            email: user.email
+            email: user.email,
+            name: nameUser
           })
             .then(() => {
               this.userActive = user;

@@ -17,8 +17,8 @@ export class AdapterDatabaseService implements IDatabase {
   private getIdUserActive(): string {
     return this.managerUser.getIdUserActive();
   }
-  public signUp(email: string, password: string): Promise<any> {
-    return this.managerUser.signUp(email, password);
+  public signUp(name: string, email: string, password: string): Promise<any> {
+    return this.managerUser.signUp(name, email, password);
   }
   public signIn(email: string, password: string): Promise<any> {
     return this.managerUser.signIn(email, password);

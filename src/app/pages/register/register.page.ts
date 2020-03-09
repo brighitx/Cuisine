@@ -14,6 +14,10 @@ export class RegisterPage implements OnInit {
   passwordShow: boolean = false;
 
   error_messages = {
+    'name': [{
+      type: 'required',
+      message: 'Introduce un nombre de usuario.'
+    },],
     'email': [{
       type: 'required',
       message: 'Introduce tu correo electrónico.'
@@ -47,6 +51,9 @@ export class RegisterPage implements OnInit {
   }
   constructor(public formBuilder: FormBuilder, public database: IDatabase, public router: Router) {
     this.registerForm = this.formBuilder.group({
+      name: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
       email: new FormControl('', Validators.compose([
         Validators.required
       ])),
@@ -85,7 +92,7 @@ export class RegisterPage implements OnInit {
   }
 
   onSubmit() {
-    this.database.signUp(this.registerForm.value.email, this.registerForm.value.password).then(() => {
+    this.database.signUp(this.registerForm.value.name, this.registerForm.value.email, this.registerForm.value.password).then(() => {
       console.log('creado');
       this.router.navigate(['main']);
     }).catch(() => {

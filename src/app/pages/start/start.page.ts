@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-start',
@@ -11,9 +12,12 @@ export class StartPage implements OnInit {
     'Recetas caseras y sencillas con preparación paso a paso',
     'Deliciosas recetas para todos los gustos'];
 
-  constructor() { }
+  constructor(public menuCtrl: MenuController) { }
 
   ngOnInit() {
+  }
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
   }
 
 }

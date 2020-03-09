@@ -2,7 +2,7 @@ import { Recipe } from './../core/model/recipe';
 import { User } from '../core/model/user';
 
 export abstract class IDatabase {
-    abstract signUp(email: string, password: string): Promise<any>;
+    abstract signUp(name: string, email: string, password: string): Promise<any>;
     abstract signIn(email: string, password: string): Promise<any>;
     abstract takeUser(uid: string): User;
     abstract takeCurrentUser(): User;

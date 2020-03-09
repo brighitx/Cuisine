@@ -1,0 +1,26 @@
+<ion-menu menuId="perfil" side="end" type="overlay" contentId="principal" id="perfil">
+  <ion-content color="success">
+    <ion-list id="color">
+      <ion-item color="success" [routerLink]="['/main']">
+        <ion-icon slot="start" name="person"></ion-icon>
+        Editar perfil
+      </ion-item>
+
+      <ion-item color="success" [routerLink]="['/main']">
+        <ion-icon slot="start" name="create"></ion-icon>
+        Cambiar contraseña
+      </ion-item>
+
+      <ion-item color="success">
+        <ion-icon slot="start" name="file-tray-stacked-outline"></ion-icon>
+        Mis recetas favoritas
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer>
+    <ion-item color="success" (click)="signOut()">
+      <ion-icon slot="start" name="exit"></ion-icon>
+      Cerrar sesion
+    </ion-item>
+  </ion-footer>
+</ion-menu>

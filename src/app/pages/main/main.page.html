@@ -6,6 +6,10 @@
 
 <ion-content>
   <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Buscar receta..." animated></ion-searchbar>
+  <ion-chip color="danger" (click)="filterItemsVegan()">
+    VEGAN
+    <ion-icon name="close-circle" *ngIf="veganoption"></ion-icon>
+  </ion-chip>
   <ion-card *ngFor="let item of items" (click)="showRecipe(item.id)">
     <img src={{item.image}} style="border-radius: 30%;"/>
     <ion-card-header>

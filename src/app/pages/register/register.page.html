@@ -1,9 +1,23 @@
 <app-header></app-header>
 
 <ion-content text-center padding>
-    <h1 class="titulo">Crea tu cuenta</h1>
+    <ion-item lines="none">
+        <ion-label class="titulo">Crea tu cuenta</ion-label>
+    </ion-item>
     <div class="container">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <ion-item>
+                <ion-label position="floating">Nombre de usuario</ion-label>
+                <ion-input class="form-control" formControlName="name" type="text"></ion-input>
+            </ion-item>  
+            <div class="error-messages">
+                <ng-container *ngFor="let error of error_messages.name">
+                    <div class="error-message"
+                        *ngIf="registerForm.get('name').hasError(error.type) && (registerForm.get('name').dirty || registerForm.get('name').touched)">
+                        {{ error.message }}
+                    </div>
+                </ng-container>
+            </div>
             <ion-item>
                 <ion-label position="floating">Email</ion-label>
                 <ion-input class="form-control" formControlName="email" type="email"
@@ -22,8 +36,7 @@
             <ion-item>
                 <ion-label position="stacked">Contraseña</ion-label>    
                 <ion-input formControlName="password" [type]="passwordType"></ion-input>
-                <ion-icon name="eye" slot="end" (click)="togglePassword()"></ion-icon>       
-                        
+                <ion-icon name="eye" slot="end" (click)="togglePassword()"></ion-icon>                              
             </ion-item>
             <div class="error-messages">
                 <ng-container *ngFor="let error of error_messages.password">
