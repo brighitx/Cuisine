@@ -24,6 +24,15 @@ const routes: Routes = [
     path: 'show-recipe/:id',
     loadChildren: () => import('./pages/show-recipe/show-recipe.module').then( m => m.ShowRecipePageModule)
   },
+  {
+    path: 'update-password',
+    loadChildren: () => import('./pages/update-password/update-password.module').then( m => m.UpdatePasswordPageModule)
+  },  {
+    path: 'update-profile',
+    loadChildren: () => import('./pages/update-profile/update-profile.module').then( m => m.UpdateProfilePageModule)
+  },
+
+
 
 ];
 

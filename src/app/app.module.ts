@@ -14,12 +14,15 @@ import { IDatabase } from './interfaces/database-i';
 import { AdapterDatabaseService } from './services/adapterDatabase/adapter-database.service';
 
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
+import { Camera } from '@ionic-native/camera/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
 
 import { AngularFireModule } from '@angular/fire';
 import { environment } from './../environments/environment';
 import { FirestoreSettingsToken, AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,6 +34,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     ComponentsModule
   ],
   providers: [
@@ -39,6 +43,10 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     AngularFirestore,
     AngularFireAuthModule,
     YoutubeVideoPlayer,
+    AngularFireStorageModule,
+    ImagePicker,
+    File,
+    Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: FirestoreSettingsToken, useValue: {}},
     { provide: IDatabase , useClass: AdapterDatabaseService}

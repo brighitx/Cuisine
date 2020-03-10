@@ -1,0 +1,23 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="cuisine" defaultHref="main"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="text">Editar perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input [(ngModel)]="this.name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input [(ngModel)]="this.email"></ion-input>
+  </ion-item>
+</ion-list>
+<ion-button (click)="this.update()" expand="full" color="cuorange">Guardar</ion-button>
+
+</ion-content>

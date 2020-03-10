@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 import { User } from '../../core/model/user';
 import { IDatabase } from '../../interfaces/database-i';
 import { Recipe } from 'src/app/core/model/recipe';
+import { Opinion } from 'src/app/core/model/opinion';
+import { ManagerOpinionService } from '../managerOpinion/manager-opinion.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ import { Recipe } from 'src/app/core/model/recipe';
 
 export class AdapterDatabaseService implements IDatabase {
 
-  constructor(private managerUser: ManagerUserService, private managerRecipe: ManagerRecipeService) {
+  constructor(private managerUser: ManagerUserService, private managerRecipe: ManagerRecipeService, private managerOpinion: ManagerOpinionService) {
   }
   private getIdUserActive(): string {
     return this.managerUser.getIdUserActive();
@@ -52,5 +54,11 @@ export class AdapterDatabaseService implements IDatabase {
   }
   public getRecipe(id: string): Recipe {
     return this.managerRecipe.getRecipe(id);
+  }
+  public getOpinions(rid: string): Array<Opinion> {
+    return this.managerOpinion.getOpinions(rid);
+  }
+  public uploadOpinion(file, randomId): void {
+    this.managerOpinion.uploadOpinion(file, randomId);
   }
 }

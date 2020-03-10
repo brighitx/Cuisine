@@ -1,5 +1,6 @@
 import { Recipe } from './../core/model/recipe';
 import { User } from '../core/model/user';
+import { Opinion } from '../core/model/opinion';
 
 export abstract class IDatabase {
     abstract signUp(name: string, email: string, password: string): Promise<any>;
@@ -14,4 +15,6 @@ export abstract class IDatabase {
     abstract deleteUser(): void;
     abstract getAllRecipes(): Array<Recipe>;
     abstract getRecipe(id: string): Recipe;
+    abstract getOpinions(rid: string): Array<Opinion>;
+    abstract uploadOpinion(file, randomId): void;
 }

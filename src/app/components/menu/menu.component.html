@@ -2,11 +2,16 @@
   <ion-content color="success">
     <ion-list id="color">
       <ion-item color="success" [routerLink]="['/main']">
+        <ion-icon slot="start" name="home"></ion-icon>
+        Inicio
+      </ion-item>
+
+      <ion-item color="success" [routerLink]="['/update-profile']">
         <ion-icon slot="start" name="person"></ion-icon>
         Editar perfil
       </ion-item>
 
-      <ion-item color="success" [routerLink]="['/main']">
+      <ion-item color="success" [routerLink]="['/update-password']">
         <ion-icon slot="start" name="create"></ion-icon>
         Cambiar contraseña
       </ion-item>
