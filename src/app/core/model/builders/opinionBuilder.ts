@@ -19,8 +19,8 @@ export class OpinionBuilder {
         return this;
     }
 
-    public build(userName: string, recipeId): Opinion {
-        return new Opinion(this.generateDID(), recipeId, userName, this._image, this._opinion, this._mark);
+    public build(nameuser: string, recipeId): Opinion {
+        return new Opinion(this.generateDID(), recipeId, nameuser, this._image, this._opinion, this._mark);
     }
 
 

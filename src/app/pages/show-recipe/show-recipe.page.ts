@@ -2,6 +2,7 @@ import { IDatabase } from 'src/app/interfaces/database-i';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
+import { Router } from '@angular/router';
 import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx';
 import { Camera, CameraOptions } from "@ionic-native/camera/ngx";
 import { File, FileEntry } from "@ionic-native/file/ngx";
@@ -21,10 +22,7 @@ export class ShowRecipePage implements OnInit {
   images: any[];
 
   constructor(
-    public dataBase: IDatabase,
-    private route: ActivatedRoute,
-    private youtube: YoutubeVideoPlayer,
-    private file: File) {
+    public dataBase: IDatabase, private route: ActivatedRoute, private youtube: YoutubeVideoPlayer, private router: Router) {
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
@@ -47,6 +45,9 @@ export class ShowRecipePage implements OnInit {
   getDirections() {
     this.directions = this.getData().directions.split('/');
     return this.directions;
+  }
+  createOpinion(id) {
+    this.router.navigate(['/create-opinion', id]);
   }
 
   ngOnInit() {

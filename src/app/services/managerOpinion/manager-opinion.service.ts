@@ -1,11 +1,12 @@
+import { Opinion } from './../../core/model/opinion';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { Opinionable } from './../../core/model/interfaces/opinionable';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Opinion } from 'src/app/core/model/opinion';
+import { OpinionBuilder } from 'src/app/core/model/builders/opinionBuilder';
+import { Opinionable } from 'src/app/core/model/interfaces/opinionable';
 
 @Injectable({
   providedIn: 'root'
@@ -46,5 +47,31 @@ export class ManagerOpinionService {
     return opinionsRecipe;
   }
   uploadOpinion(file, randomId) {
+  }
+
+  createOpinion(rid: string, nameuser: string, image: string, opinionuser: string, mark: string): Promise<string> {
+    return new Promise((resolver, rejected) => {
+      const opinionBuilder = new OpinionBuilder();
+      const noseque = opinionBuilder.restart()
+        .image(image)
+        .opinion(opinionuser)
+        .mark(mark)
+        .build(nameuser, rid);
+      this.opinionsColection.doc(noseque.id).set({
+        rid: noseque.rid,
+        nameuser: noseque.nameuser,
+        image: noseque.image,
+        opinion: noseque.opinion,
+        mark: noseque.mark
+      })
+        .then(() => {
+          console.log("Opinion creada");
+          console.log(noseque);
+          resolver('Okay');
+        })
+        .catch(() => {
+          rejected('Error');
+        });
+    });
   }
 }
