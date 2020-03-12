@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { IDatabase } from 'src/app/interfaces/database-i';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-create-opinion',
@@ -16,7 +17,7 @@ export class CreateOpinionPage implements OnInit {
   opciones: any;
   puntuacion: string;
   opinionuser: string;
-  nombreuser:string;
+  nombreuser: string;
 
   constructor(public dataBase: IDatabase, private imagePicker: ImagePicker, private camera: Camera, private route: ActivatedRoute, private router: Router) {
     this.route.params.subscribe(params => {
@@ -47,13 +48,11 @@ export class CreateOpinionPage implements OnInit {
   }
 
   pickImages() {
-    console.log('entra');
     this.opciones = {
       width: 100,
       height: 100
     };
     this.imagePicker.requestReadPermission().then(result => {
-      console.log('requestReadPermission: ', result);
       if (result == "OK") {
         this.imagePicker.getPictures(this.opciones).then((results) => {
         });

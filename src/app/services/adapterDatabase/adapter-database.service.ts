@@ -58,7 +58,7 @@ export class AdapterDatabaseService implements IDatabase {
   public getOpinions(rid: string): Array<Opinion> {
     return this.managerOpinion.getOpinions(rid);
   }
-  public uploadOpinion(file, randomId): void {
-    this.managerOpinion.uploadOpinion(file, randomId);
+  public createOpinion(rid: string, nameuser: string, image: string, opinionuser: string, mark: string): void {
+    this.managerOpinion.createOpinion(rid, nameuser, image, opinionuser, mark);
   }
 }

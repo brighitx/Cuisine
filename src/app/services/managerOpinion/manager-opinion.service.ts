@@ -46,8 +46,6 @@ export class ManagerOpinionService {
     });
     return opinionsRecipe;
   }
-  uploadOpinion(file, randomId) {
-  }
 
   createOpinion(rid: string, nameuser: string, image: string, opinionuser: string, mark: string): Promise<string> {
     return new Promise((resolver, rejected) => {
